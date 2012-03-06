@@ -13,6 +13,7 @@ td {
 <tr>
     <td>Log</td>
     <td>Elapsed Time</td>
+    <td>Time Spent</td>
     <td>Client IP</td>
     <td>MessageType</td>
     <td>Message</td>
@@ -20,10 +21,10 @@ td {
 <% for(var i=0; i<records.length; i++) {%>
 <tr>
     <td><a href="https://healthgrades.loggly.com/api/search?q=json.requestId:<%= records[i].requestId %>" title='Loggly Request' target='_blank'>view <%= i %></a></td>
-    <td><%= records[i].elapsedTime %></td>    
+    <td><%= records[i].elapsedTime %></td>
+	<td><%= records[i].timeSinceLast %></td>		
     <td><%= records[i].clientIp %></td>
     <td><%= records[i].messageType %></td>
     <td><%= records[i].message %></td>
 </tr>
 <% } %>
-</table>

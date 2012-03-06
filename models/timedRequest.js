@@ -26,8 +26,8 @@ function getRecords(logglyResponse) {
             sessionId: logglyResponse.data[i].json.sessionId
         });
     }
-   
-    return results.sort(
+    
+	results = results.sort(
         function(a, b) {
               if (a.elapsedTime < b.elapsedTime)
                  return -1;
@@ -35,4 +35,13 @@ function getRecords(logglyResponse) {
                 return 1;
               return 0;
         });
+   
+    return addTimeSinceLast(results);
+}
+function addTimeSinceLast(records){
+	records[0].timeSinceLast = 0;
+	for(var i=1; i<records.length; i++) {
+		records[i].timeSinceLast = records[i].elapsedTime - records[i-1].elapsedTime;
+	}
+	return records;
 }
