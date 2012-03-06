@@ -1,9 +1,8 @@
 
 module.exports = function(logglyResponse) {
     this.title = "Time Request Title";
-    this.totalCount = logglyResponse.numFound;    
-    this.requestId = "requestId";
-    this.sessionId = "sessionId";
+    this.totalCount = logglyResponse.numFound;   
+
     this.records = getRecords(logglyResponse);
 };
 
@@ -22,7 +21,12 @@ function getRecords(logglyResponse) {
             clientIp: logglyResponse.data[i].json.ip,
             message: message,
             elapsedTime: logglyResponse.data[i].json.elaspedTime,
+            timeStamp: logglyResponse.data[i].timestamp,
+            requestId: logglyResponse.data[i].json.requestId,
+            sessionId: logglyResponse.data[i].json.sessionId,
         });
     }
-    return results;
+    return results.sort(function(recordA, recordB) {
+                            return recordA.elapsedTime > recordB.elapsedTime
+                        });
 }

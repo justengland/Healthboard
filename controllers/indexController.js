@@ -3,7 +3,7 @@ var modelObject = require('../models/timedRequest.js');
 this.loadModel = function (callback) {
         
     var logglyHelper = require('../utilities/logglyHelper.js');
-    logglyHelper.getLogglyApi('json.url:x74n8', 3, 
+    logglyHelper.getLogglyApi('json.url:x74n8', 2000, 
         // Vaild Response from Loggly
         function(response) {
             var model = new modelObject(response);
