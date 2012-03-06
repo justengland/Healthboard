@@ -2,21 +2,25 @@
 <h1><%= title %></h1>
 <p>Welcome to <%= title %></p>
 <p>Total Count: <%= totalCount  %></p>
-
+<style>
+td {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+</style>
 <table border=1>
-<th>
+<tr>
+    <td>Log</td>
     <td>Elapsed Time</td>
-    <td>Request Id</td>
-    <td>Session Id</td>        
     <td>Client IP</td>
     <td>MessageType</td>
     <td>Message</td>
-</th>
+</tr>
 <% for(var i=0; i<records.length; i++) {%>
-<tr>    
-    <td><%= records[i].elapsedTime %></td>
-    <td><a href="https://healthgrades.loggly.com/api/search?q=json.requestId:<%= records[i].requestId %>" title='Loggly Request' target='_blank'><%= records[i].requestId %></a></td>
-    <td><a href="https://healthgrades.loggly.com/api/search?q=json.sessionId:<%= records[i].sessionId %>" title='Loggly Session' target='_blank'><%= records[i].sessionId %></a></td>
+<tr>
+    <td><a href="https://healthgrades.loggly.com/api/search?q=json.requestId:<%= records[i].requestId %>" title='Loggly Request' target='_blank'>view <%= i %></a></td>
+    <td><%= records[i].elapsedTime %></td>    
     <td><%= records[i].clientIp %></td>
     <td><%= records[i].messageType %></td>
     <td><%= records[i].message %></td>

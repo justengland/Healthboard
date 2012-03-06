@@ -1,6 +1,6 @@
 
 module.exports = function(logglyResponse) {
-    this.title = "Time Request Title";
+    this.title = "Time Request Title2";
     this.totalCount = logglyResponse.numFound;   
 
     this.records = getRecords(logglyResponse);
@@ -20,15 +20,19 @@ function getRecords(logglyResponse) {
             messageType: logglyResponse.data[i].json.messageType,
             clientIp: logglyResponse.data[i].json.ip,
             message: message,
-            elapsedTime: logglyResponse.data[i].json.elaspedTime,
+            elapsedTime: Math.round(logglyResponse.data[i].json.elaspedTime),
             timeStamp: logglyResponse.data[i].timestamp,
             requestId: logglyResponse.data[i].json.requestId,
-            sessionId: logglyResponse.data[i].json.sessionId,
+            sessionId: logglyResponse.data[i].json.sessionId
         });
     }
-    return results.sort(function(recordA, recordB) {
-                            var timeA = new Number(recordA.elapsedTime);
-                            var timeB = new Number(recordB.elapsedTime);
-                            return timeA > timeB;
-                        });
+   
+    return results.sort(
+        function(a, b) {
+              if (a.elapsedTime < b.elapsedTime)
+                 return -1;
+              if (a.elapsedTime > b.elapsedTime)
+                return 1;
+              return 0;
+        });
 }

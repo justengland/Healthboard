@@ -28,8 +28,7 @@ app.configure('production', function(){
 // Routes
 app.get('/', function(req, res){
     var indexController = require('./controllers/indexController');
-    indexController.loadModel(function(model) {        
-        var indexModel = { title: 'getting there', model: model }
+    indexController.loadModel(req, function(model) {        
         res.render('index', model);
     });    
 });
