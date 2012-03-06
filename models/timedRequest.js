@@ -1,6 +1,6 @@
 
 module.exports = function(logglyResponse) {
-    this.title = "Time Request Title2";
+    this.title = "Timed Request";
     this.totalCount = logglyResponse.numFound;   
 
     this.records = getRecords(logglyResponse);
