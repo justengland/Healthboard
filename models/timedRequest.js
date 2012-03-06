@@ -27,6 +27,8 @@ function getRecords(logglyResponse) {
         });
     }
     return results.sort(function(recordA, recordB) {
-                            return recordA.elapsedTime > recordB.elapsedTime
+                            var timeA = new Number(recordA.elapsedTime);
+                            var timeB = new Number(recordB.elapsedTime);
+                            return timeA > timeB;
                         });
 }
