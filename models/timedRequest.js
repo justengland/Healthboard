@@ -23,10 +23,11 @@ function getRecords(logglyResponse) {
             elapsedTime: Math.round(logglyResponse.data[i].json.elaspedTime),
             timeStamp: logglyResponse.data[i].timestamp,
             requestId: logglyResponse.data[i].json.requestId,
-            sessionId: logglyResponse.data[i].json.sessionId
+            sessionId: logglyResponse.data[i].json.sessionId,
+    		timeSinceLast: -1
         });
     }
-    
+	
 	results = results.sort(
         function(a, b) {
               if (a.elapsedTime < b.elapsedTime)
