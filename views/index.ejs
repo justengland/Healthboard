@@ -1,0 +1,15 @@
+<!-- http://embeddedjs.com/ - check out http://blog.nodejitsu.com/micro-templates-are-dead -->
+<h1><%= title %></h1>
+<p>Welcome to <%= title %></p>
+<p>Total Count: <%= totalCount  %></p>
+
+<table border=1>
+<% for(var i=0; i<records.length; i++) {%>
+<tr>
+    <td><%= records[i].clientIp %></td>
+    <td><%= records[i].messageType %></td>
+    <td><%= records[i].message %></td>
+    <td><%= records[i].elapsedTime %></td>
+</tr>
+<% } %>
+</table>
