@@ -1,8 +1,8 @@
 
-module.exports = function(logglyResponse) {
+module.exports = function(logglyResponse, template) {
     this.title = "Timed Request";
     this.totalCount = logglyResponse.numFound;   
-
+    this.bodyTemplate = template;
     this.records = getRecords(logglyResponse);
 };
 
@@ -39,6 +39,7 @@ function getRecords(logglyResponse) {
    
     return addTimeSinceLast(results);
 }
+
 function addTimeSinceLast(records){
 	records[0].timeSinceLast = 0;
 	for(var i=1; i<records.length; i++) {

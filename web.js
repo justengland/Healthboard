@@ -25,14 +25,36 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-// Routes
+/**
+ * Route Section
+ */
+// Base Route
 app.get('/', function(req, res){
-    var indexController = require('./controllers/indexController');
-    indexController.loadModel(req, function(model) {        
-        res.render('index', model);
+    var controller = require('./controllers/indexController.js');
+    controller.loadModel(req, function(model) {  
+        res.render(model.bodyTemplate, model);
     });    
 });
 
+// Search Route
+app.get('/search', function(req, res){
+    var controller = require('./controllers/searchController.js');
+    controller.loadModel(req, function(model) {  
+        res.render(model.bodyTemplate, model);
+    });    
+});
+
+// Guage Route
+app.get('/gauge', function(req, res){
+    var controller = require('./controllers/gaugeController.js');
+    controller.loadModel(req, function(model) {  
+        res.json(model);
+    });    
+});
+
+/**
+ * Start Web Server
+ */
 var port = process.env.PORT || 3000;
 app.listen(port);
 console.log("Express server listening on: " + port);

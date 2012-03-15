@@ -1,27 +1,3 @@
-<!-- http://embeddedjs.com/ - check out http://blog.nodejitsu.com/micro-templates-are-dead -->
 <h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
-<p>Total Count: <%= totalCount  %></p>
-
-<table border=1>
-<th>
-    <td>Elapsed Time</td>
-    <td>Request Id</td>
-    <td>Session Id</td>        
-    
-    <td>Client IP</td>
-    <td>MessageType</td>
-    <td>Message</td>
-</th>
-<% for(var i=0; i<records.length; i++) {%>
-<tr>    
-    <td><%= records[i].elapsedTime %></td>
-    <td><a href="https://healthgrades.loggly.com/api/search?q=json.requestId:<%= records[i].requestId %>" title='Loggly Request' target='_blank'><%= records[i].requestId %></a></td>
-    <td><a href="https://healthgrades.loggly.com/api/search?q=json.sessionId:<%= records[i].sessionId %>" title='Loggly Session' target='_blank'><%= records[i].sessionId %></a></td>
-    
-    <td><%= records[i].clientIp %></td>
-    <td><%= records[i].messageType %></td>
-    <td><%= records[i].message %></td>
-</tr>
-<% } %>
-</table>
+<h2>Errors are bad, report them to justin</h2>
+<p><%= err %></p>

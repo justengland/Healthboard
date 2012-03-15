@@ -1,7 +1,7 @@
 // Default options for every page.
-module.exports = {
-    error = ''
-    model = {},    
-    title = '',
-    view = 'index'
+module.exports = function() {
+    this.error = ''
+    this.model = {},    
+    this.title = 'set title',
+    this.bodyTemplate = 'error.ejs'
 };
