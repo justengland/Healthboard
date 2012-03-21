@@ -19,7 +19,7 @@ exports.getLogglyApi = function(searchQuery, request, responseCallback, errorCal
         searchQuery = request.query.q;
     }
     client.search(searchQuery)
-          .meta({ inputname: 'hgphoenix' })
+          //.meta({ inputname: 'hgphoenix' })
           .context(searchContext)
           .run(function (error, results) {
                 // Inspect the result set
