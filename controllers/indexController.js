@@ -1,11 +1,10 @@
-var modelObject = require('../models/timedRequest.js');
-
 this.loadModel = function (request, callback) {    
     var logglyHelper = require('../utilities/logglyHelper.js');
     
-    logglyHelper.getLogglyApi('*:*', request, 
+    logglyHelper.search('*:*', request, 
         // Vaild Response from Loggly
         function(response) {
+            var modelObject = require('../models/timedRequest.js');
             var model = new modelObject(response, 'index.ejs');
             callback(model);
         },
