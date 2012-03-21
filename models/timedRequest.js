@@ -9,13 +9,19 @@ module.exports = function(logglyResponse, template) {
 function getRecords(logglyResponse) {
     var results = [];
     var jsonSerializer = require('JSON');
+    
+    if(logglyResponse.data.length == 0) {        
+        // todo: return null and create a graceful zero results view.
+        return results;
+    }
+        
     for(var i=0; i<logglyResponse.data.length; i++) {
         var message = "";
         if(logglyResponse.data[i].isjson)
             message = jsonSerializer.stringify(logglyResponse.data[i].json.message);
         else
             message = logglyResponse.data[i].json.message;
-            
+                    
         results.push({
             messageType: logglyResponse.data[i].json.messageType,
             clientIp: logglyResponse.data[i].json.ip,
@@ -24,7 +30,7 @@ function getRecords(logglyResponse) {
             timeStamp: logglyResponse.data[i].timestamp,
             requestId: logglyResponse.data[i].json.requestId,
             sessionId: logglyResponse.data[i].json.sessionId,
-    		timeSinceLast: -1
+    		timeSinceLast: 0
         });
     }
 	
@@ -41,7 +47,6 @@ function getRecords(logglyResponse) {
 }
 
 function addTimeSinceLast(records){
-	records[0].timeSinceLast = 0;
 	for(var i=1; i<records.length; i++) {
 		records[i].timeSinceLast = records[i].elapsedTime - records[i-1].elapsedTime;
 	}
