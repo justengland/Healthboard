@@ -40,6 +40,12 @@ function getRecords(logglyResponse) {
                  return -1;
               if (a.elapsedTime > b.elapsedTime)
                 return 1;
+                
+              if (a.timeStamp < b.timeStamp)
+                 return -1;
+              if (a.timeStamp > b.timeStamp)
+                return 1;
+                 
               return 0;
         });
    

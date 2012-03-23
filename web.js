@@ -52,6 +52,14 @@ app.get('/gauge', function(req, res){
     });    
 });
 
+// Guage Route
+app.get('/multiline', function(req, res){
+    var controller = require('./controllers/multiLine.js');
+    controller.loadModel(req, function(model) {  
+        res.json(model);
+    });    
+});
+
 /**
  * Start Web Server
  */
