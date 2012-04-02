@@ -9,8 +9,11 @@ var app = module.exports = express.createServer();
 // Configuration
 
 app.configure(function(){
+  app.enable("jsonp callback");
+  
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
+  
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
@@ -52,10 +55,11 @@ app.get('/gauge', function(req, res){
     });    
 });
 
-// Guage Route
+// multiline Route
 app.get('/multiline', function(req, res){
-    var controller = require('./controllers/multiLine.js');
+    var controller = require('./controllers/multiLineController.js');
     controller.loadModel(req, function(model) {  
+        // todo: handle jsonp requests - jsonp = this.app.enabled('jsonp callback');
         res.json(model);
     });    
 });

@@ -1,5 +1,9 @@
 # Healthgrades Site Health Dashboard
 
+# Test Urls
+http://healthboards.herokuapp.com/gauge&q=inputname:hgphoenix AND -json.userAgent:TestBot AND (json.message.errorcode:[-1 TO 403] OR json.message.errorcode:[405 TO 1000])&from=NOW-1HOUR&minText=min&minVal=0&maxText=max&maxVal=100
+http://healthboards.herokuapp.com/gauge?q=json.message.errorcode:404%20AND%20inputname:hgphoenix%20-json.userAgent:TestBot&from=NOW-1HOUR&minText=min&minVal=0&maxText=max&maxVal=100
+
 # Git Note: I had to recreate the git repository, through the command line.
 # Then things seem to take, I did create the heroku application throught the ui.
 

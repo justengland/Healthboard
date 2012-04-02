@@ -45,11 +45,11 @@ exports.facet = function(facetQuery, facetBy, request, responseCallback, errorCa
     
     // Set the query from the query string
     var fBy = 'date';
-    if(facetQuery !== null) {
+    if(facetBy !== null) {
         fBy = facetBy;
     } else if (typeof request.query.facetby !== 'undefined') {
         fBy = request.query.facetby;
-    }   
+    }       
     
     client.facet(fBy, fQuery)
           .context(facetContext)
