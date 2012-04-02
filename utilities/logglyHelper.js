@@ -69,7 +69,7 @@ function createLogglyFacetContext(request) {
         //facetby: 'date',
         from: 'NOW-1HOUR',
         // query: '*:*',
-        buckets: 5,          
+        // buckets: 5,          
         // gap: '+1HOUR'        
         // start: 0,
         // until: 'NOW'
