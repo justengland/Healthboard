@@ -23,7 +23,7 @@ Next steps:
   touch README
   git add README
   git commit -m 'first commit'
-  git remote add origin git@github.com:justengland/FireBall.git
+  git remote add origin git@github.com:justengland/FireBall.git 
   git push -u origin master
       
 Existing Git Repo?
