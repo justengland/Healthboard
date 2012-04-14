@@ -6,7 +6,7 @@ var config = {
     subdomain: "healthgrades",
     auth: {
         username: "user",
-        password: "hg.user"
+        password: "dell123"
     }
 };
 
