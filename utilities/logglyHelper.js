@@ -5,8 +5,8 @@ var loggly = require('loggly');
 var config = {
     subdomain: "healthgrades",
     auth: {
-        username: "user",
-        password: "dell123"
+        username: "hgadmin",
+        password: "hg.loggly"
     }
 };
 

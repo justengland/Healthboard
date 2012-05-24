@@ -1,15 +1,14 @@
-// Constructor
-module.exports = function(fieldList, logglyResponse) {
-    this.title = "Loggly Field List";
+module.exports = function(logglyResponse, fieldList, template) {
+    this.title = "Timed Request";
     this.totalCount = logglyResponse.numFound;   
-    this.records = getRecords(fieldList, logglyResponse);
+    this.bodyTemplate = template;
+    this.records = trimFields(logglyResponse, fieldList);
 };
 
-// Load the request from loggly
-function getRecords(fieldList, logglyResponse) {
-    var results = [];
-    for(var i=0; i<logglyResponse.data.length; i++) {
-        
-    }
-    return results;
+function trimFields(logglyResponse, fieldList) {
+    return [
+            {title: 'trimField', timeout:100, input:'test1'},
+            {title: 'trimField1', timeout:50, input:'test2'},
+            {title: 'trimField2', timeout:30, input:'test3'},
+           ];
 }

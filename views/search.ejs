@@ -1,1 +1,25 @@
 <h1><%= title %></h1>
+<p>Total Count: <%= totalCount  %></p>
+<style>
+table{
+    table-layout: fixed;
+}
+td {
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    border-collapse:collapse;    
+}
+</style>
+<table border=1>
+<tr>
+    <td>test</td>
+</tr>
+<% for(var i=0; i<records.length; i++) {%>
+    <% var currentRecord = records[i]; for( var propertyName in currentRecord ) { %>
+    <tr>
+        <td><%= propertyName %></td>  
+      	<td><%= currentRecord[propertyName] %></td>  
+    </tr>
+<%     } %>
+<% } %>
