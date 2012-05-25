@@ -4,7 +4,8 @@ this.loadModel = function (request, callback) {
         // I though this was simple enogh for no formal model.
         function(response) {
             var modelObject = require('../models/searchModel.js');
-            var model = new modelObject(response, null, 'search.ejs');
+            var fields = loadFileds(request);
+            var model = new modelObject(response, fields , 'search.ejs');
             callback(model);
         },
         // Invaild Response from loggly
@@ -14,4 +15,15 @@ this.loadModel = function (request, callback) {
         }
     );
 };
+
+function loadFileds(request) {
+    var fields = request.query.fl.split(',');
+    var result = [];
+    for(var i=0; i<fields.length; i++) { 
+        result.push(fields[i].trim());  
+    }
+    return result;    
+}
+
+
 

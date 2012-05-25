@@ -42,8 +42,32 @@ app.get('/', function(req, res){
 // Search Route
 app.get('/search', function(req, res){
     var controller = require('./controllers/searchController.js');
-    controller.loadModel(req, function(model) {  
-        res.render(model.bodyTemplate, model);
+    controller.loadModel(req, function(model) {
+        //  res.contentType('application/json');
+        //  res.send('Sorry, cant find that', 404);
+        if(typeof req.query.format !== 'undefined') {            
+            if(req.query.format.toUpperCase() === "CSV"){
+                model.bodyTemplate = "csv";
+                res.contentType('text/csv');
+                res.write(model.toCsv());
+            }            
+            else if(req.query.format.toUpperCase() === "RSS"){
+                model.bodyTemplate = "RSS";
+                res.contentType('application/rss+xml');                
+                res.send(model);
+            }
+            else if(req.query.format.toUpperCase() === "JSON"){
+                model.bodyTemplate = "JSON";
+                res.json(model);
+            }
+            else {
+                res.render(model.bodyTemplate, model);   
+            }
+        }
+        else {
+            res.render(model.bodyTemplate, model);   
+        }
+            
     });    
 });
 
@@ -69,4 +93,4 @@ app.get('/multiline', function(req, res){
  */
 var port = process.env.PORT || 3000;
 app.listen(port);
-console.log("Express server listening on: " + port);
+console.log("healthboards server listening on: " + port);

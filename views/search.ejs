@@ -13,13 +13,20 @@ td {
 </style>
 <table border=1>
 <tr>
-    <td>test</td>
+<!-- Create the header row for all the fields -->
+<% for(var i=0; i<fields.length; i++) {%>
+    <td><%= fields[i] %></td>  
+<% } %>
 </tr>
-<% for(var i=0; i<records.length; i++) {%>
-    <% var currentRecord = records[i]; for( var propertyName in currentRecord ) { %>
+
+<!-- Loop through the results from loggly -->
+<% for(var i=0; i<records.length; i++) { 
+    var currentRecord = records[i]; %>
     <tr>
-        <td><%= propertyName %></td>  
-      	<td><%= currentRecord[propertyName] %></td>  
+    <!-- Loop through each field member-->
+    <% for(var j=0; j<fields.length; j++) { 
+        var propertyName = fields[j];  %>                
+            <td><%= currentRecord[propertyName] %></td> 
+    <% } %>
     </tr>
-<%     } %>
 <% } %>
