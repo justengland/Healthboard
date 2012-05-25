@@ -2,13 +2,12 @@
     "name": "healthboards",
     "main": "web.js",
     "version": "0.0.1",
-  
     "dependencies": {
         "express": "2.5.8",
         "ejs": "0.6.1",
         "loggly": "0.3.11",
         "util": "0.4.9",
-        "rss":"0.0.3",
+        "rss": "0.0.3",
         "csv": "0.0.13"
     }
 }
